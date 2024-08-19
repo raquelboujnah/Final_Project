@@ -1,0 +1,272 @@
+Creating an app for people who think about getting a dog for the first time. the app will simulate a month as a dog owner (without a dog)
+
+The owner will have: 
+- a wallet budjet to buy food, get the dog to the veterinar, fix some damage in his house, maybe for dogsiting
+- a reminder for going for an hour walk byhimself, to a dogpark
+- a reminder for feeding the dog
+- a small courses to train a dog and a reminder for an hour to simulate that
+- a list of things they will need to do or buy before the dog's arrival
+- a fun fact message every day about dogs
+- Choosing different breeds of dogs, each with unique needs and expenses.
+- Unexpected events (e.g., vet emergencies, training issues) to simulate real-life challenges.
+- Tracks the user's performance over time, giving feedback on whether they are ready for dog ownership.
+- Community Integration: Add a social aspect where users can share their experiences and tips with others.
+
+
+authentication sign up/ in                 logout
+Database for use                           for api
+budjet wallet increse/decrese              save to user data
+alarms one for walk one for foof           one for train maybe more
+todolist
+
+
+
+const funFact = async() => {
+    const res = await fetch('https://dogapi.dog/api/v1/facts?number=5', {
+        headers: {
+            'accept': 'application/json'
+        }
+    })
+    const data = await res.json()
+    console.log(data);
+}
+
+funFact()
+funFact()
+funFact()
+funFact()
+funFact()
+funFact()
+
+
+Project Outline: Dog Ownership Simulation App
+1. Project Setup
+    Initialize the Project:
+        Set up a new project using Node.js for the backend and React with TypeScript for the frontend.
+
+    Initialize a repository (e.g., GitHub) for version control.
+
+    Install Dependencies:
+        Backend: Express, Mongoose (or another ORM if using a relational database), JWT (for authentication), bcrypt (for password hashing), and other utilities like dotenv for environment variables.
+        Frontend: React, Redux, Redux Toolkit, React Router, TypeScript, axios (for API calls), and libraries like Material-UI or Bootstrap for styling.
+
+
+2. Database Design
+    Design the Database Schema:
+        Users: Fields for username, email, password (hashed), and wallet budget.
+        Tasks: Fields for task name, description, type (e.g., feeding, walking), frequency, and reminders.
+        Fun Facts: Fields for storing daily fun facts about dogs.
+        Purchases: Fields for item name, cost, and date of purchase.
+        Courses: Fields for course name, description, duration, and reminders.
+
+    Set Up the Database:
+        Choose a database (e.g., MongoDB, PostgreSQL) and set up the necessary tables/collections.
+
+
+3. Authentication and User Management
+    User Registration:
+        Implement a registration form on the frontend.
+        Backend: Create routes for user registration, where passwords are hashed before being stored in the database.
+
+    User Login:
+        Implement a login form.
+        Backend: Create routes for user login, generating JWT tokens for authenticated sessions.
+
+    Protect Routes:
+        Use JWT for route protection on both the frontend (React Router) and backend (Express middleware).
+
+
+4. Budget and Wallet Management
+    Wallet Feature:
+        Implement a wallet that tracks the user's budget.
+        Backend: Create routes to update the wallet balance based on transactions (e.g., buying food, paying for a vet visit).
+
+    Expenses Tracking:
+        Implement UI components for tracking expenses and updating the wallet balance.
+        Backend: Create routes to log expenses and update the user's wallet accordingly.
+
+
+5. Task and Reminder System
+    Task Management:
+        Implement task components for walking, feeding, training, etc.
+        Backend: Create CRUD routes to manage tasks (create, read, update, delete).
+        Frontend: Use Redux to manage task state, and components to display tasks.
+
+    Reminders:
+        Implement a reminder system for daily tasks (e.g., walking, feeding).
+        Backend: Create logic for task reminders and integrate with a notification service (e.g., email, push notifications).
+        Frontend: Display reminders in the UI, and allow users to mark tasks as completed.
+
+
+6. Training Courses
+    Course Content:
+        Create courses with detailed steps for training a dog.
+        Backend: Store course content in the database and create routes for fetching it.
+
+    Course Reminders:
+        Implement reminders similar to task reminders but focused on training sessions.
+
+    Progress Tracking:
+    Track user progress through courses and store it in the database.
+
+
+7. Dog-Related Preparations
+    Pre-Arrival Checklist:
+        Create a checklist of items and tasks to complete before the dog's arrival.
+        Backend: Store checklist items in the database, and create routes for fetching and updating the checklist.
+        Frontend: Display the checklist and allow users to mark items as complete.
+
+
+8. Fun Fact Feature
+    Daily Fun Facts:
+        Store fun facts about dogs in the database.
+        Backend: Implement logic to fetch and display a new fun fact each day.
+        Frontend: Display the daily fun fact on the dashboard.
+
+
+9. API Integration
+    API Setup:
+        Implement a RESTful API to interact with the frontend, handling all CRUD operations for tasks, expenses, courses, etc.
+        External API Integration (Optional):
+        Integrate with external APIs if needed (e.g., for fetching additional dog-related content).
+
+
+10. Frontend Development
+    UI/UX Design:
+        Design the user interface using tools like Figma.
+        Implement the UI in React with TypeScript, using a component-based architecture.
+
+    Dashboard:
+         a dashboard to show the wallet balance, upcoming tasks, reminders, and daily fun facts.
+
+    Task Management UI:
+        Implement components for adding, editing, and deleting tasks, and displaying reminders.
+
+    Expense Management UI:
+        Implement components to track and display expenses, and update the wallet balance.
+
+
+11. Testing
+    Unit and Integration Tests:
+        Write tests for both frontend and backend using Jest, React Testing Library, and other appropriate testing tools.
+
+    End-to-End Testing:
+        Implement end-to-end tests using tools like Cypress.
+
+
+12. Deployment
+    Backend Deployment:
+        Deploy the backend to a cloud service like Heroku, AWS, or DigitalOcean.
+
+    Frontend Deployment:
+        Deploy the frontend to a service like Vercel, Netlify, or any static site hosting service.
+
+    Database Hosting:
+        Host the database on a service like MongoDB Atlas or AWS RDS.
+
+
+13. User Feedback and Iteration
+    Collect Feedback:
+        Gather feedback from users to improve the app.
+
+    Iterate and Improve:
+        Based on feedback, make iterative improvements and add new features.
+
+
+14. Post-Launch
+    Monitor and Maintain:
+        Use monitoring tools to track the performance and health of the application.
+        Maintain the app by fixing bugs, updating dependencies, and adding new content.
+        This outline should help guide the development process for your dog ownership simulation app!
+
+
+
+
+1. Choosing Different Breeds of Dogs
+    Step 1: Research Dog Breeds
+        Create a database of different dog breeds with associated data like typical size, temperament, daily exercise needs, common health issues, and average costs (food, grooming, vet visits).
+    
+    Step 2: Breed Selection UI
+        In your frontend, build a selection screen where users can choose from a list of dog breeds. Use dropdowns or cards with images and basic information.
+    
+    Step 3: Breed-Specific Needs and Expenses
+        Adjust the wallet budget and reminders based on the breed selected. For instance, a large breed might require more food and have higher vet costs.
+    
+    Step 4: Database Integration
+        Store user-selected breeds in your database and link them to user accounts. Use this information to personalize the experience.
+
+
+2. Unexpected Events
+    Step 1: Create Event Scenarios
+        Define a set of possible unexpected events (e.g., emergency vet visits, dog damages furniture, training issues). Assign probabilities and impacts (costs, time, etc.) to each event.
+
+    Step 2: Event Triggers
+        Implement logic in your backend to randomly trigger these events. This could be done at random intervals or based on user actions.
+
+    Step 3: User Notifications
+        Build a notification system to inform users about the events. Include options for users to react (e.g., pay for the vet visit, repair damages).
+
+    Step 4: Impact Calculation
+        Adjust the wallet budget and time reminders based on the user’s reaction to these events. Track how they handle these challenges.
+
+
+3. Performance Tracking and Feedback
+    Step 1: Define Performance Metrics
+        Establish key metrics like how well the user manages the budget, how consistently they follow reminders, and how they handle unexpected events.
+    
+    Step 2: Tracking System
+        Use Redux to manage state related to user actions and decisions. Track performance data across the month.
+    
+    Step 3: Feedback Mechanism
+        At the end of the simulation, generate a report for the user that evaluates their readiness for dog ownership. Highlight areas of strength and improvement.
+
+    Step 4: Data Visualization
+        Implement charts or graphs to visually represent the user's performance over time. Use libraries like Chart.js or D3.js for this.
+
+
+4. Community Integration
+    Step 1: Social Feature Planning
+        Plan out what kind of community features you want. This could include a forum, comment sections on dog breed pages, or a tips section.
+
+    Step 2: Backend Integration
+        Set up a database for storing user posts, comments, and interactions. Implement RESTful APIs for CRUD operations on posts and comments.
+
+    Step 3: UI/UX Design
+        Design a user-friendly interface for community interaction. Include features like upvoting, sharing tips, and following other users.
+
+    Step 4: Moderation Tools
+        Implement tools for moderating content, such as flagging inappropriate posts or comments. You might also want to integrate a simple reputation system.
+
+    Step 5: Real-Time Features
+        Consider adding real-time capabilities like live chat or instant notifications for community interactions using WebSockets or services like Firebase.
+    
+
+Project Development Workflow:
+    Planning & Research:
+        Start by outlining all requirements, creating user stories, and conducting necessary research on dog breeds and unexpected events.
+    
+    Database & API Design:
+        Design your database schema to handle all user data, breed information, events, and community features.
+        Create APIs for breed selection, event handling, performance tracking, and community interactions.
+
+    Frontend Development:
+        Begin by setting up the React project and implementing UI for breed selection, reminders, and event handling.
+        Use Redux to manage state across the application, ensuring a smooth user experience.
+
+    Backend Development:
+        Develop the Node.js backend to support all necessary APIs. Implement authentication, data storage, and event logic.
+
+    Integration & Testing:
+        Integrate the frontend with the backend, ensuring all data flows smoothly.
+        Perform thorough testing to catch any bugs or issues, especially with event triggering and performance tracking.
+
+    Community Features:
+        Implement community features last, as these are complex and will require careful planning. Test thoroughly for user engagement and content moderation.
+
+    Final Testing & Deployment:
+        Conduct final testing, focusing on user experience and performance.
+        Deploy the application using a service like Heroku, AWS, or Vercel.
+
+    Post-Launch Monitoring:
+        After launching, monitor user feedback and app performance. Plan for updates and improvements based on this feedback.
+        This approach should help you build a comprehensive, engaging app that simulates the experience of dog ownership for first-time owners
