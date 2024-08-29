@@ -116,7 +116,7 @@ const Register = () : ReactElement => {
             </form>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-            <Link to="/login" className="btn">Login</Link>
+            <Link to="/login" id="to_login" className="btn">Login</Link>
            
         </div>
     );

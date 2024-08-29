@@ -9,10 +9,12 @@ interface PropsInterface {
     time?: string;
     num?: number;
     image?: string;
+    id_no?: string;
+    id_yes?: string;
     onDismiss?: () => void;
 }
 
-const WalletAndPerf = ({action, time, num, image, onDismiss} : PropsInterface) : ReactElement => {
+const WalletAndPerf = ({action, time, num, image, id_no, id_yes, onDismiss} : PropsInterface) : ReactElement => {
 
     const walletDecrement = useWalletDecrement()
     const wallet = useWalletSelector()
@@ -55,8 +57,8 @@ const WalletAndPerf = ({action, time, num, image, onDismiss} : PropsInterface) :
         <>
             {num && <p id="cost">Cost: {num}</p>}
             {time && <p id="time">Time: {time}</p>}
-            <button id="yes_button" onClick={handleYes}>{action}</button>
-            <button id="no_button" onClick={handleNo}>No</button>
+            <button id={id_yes ? id_yes : "yes_button"} onClick={handleYes}>{action}</button>
+            <button id={id_no ? id_no : "no_button"} onClick={handleNo}>No</button>
             <img id="img_alert" src={image}/>
         </>
     ) 

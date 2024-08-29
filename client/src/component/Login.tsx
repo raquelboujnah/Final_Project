@@ -81,7 +81,7 @@ const Login = (): ReactElement => {
             </form>
             {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
-            <Link to="/register" className="btn btn-outline-info btn-sm">Register</Link>
+            <Link to="/register" id="to_register" className="btn btn-outline-info btn-sm">Register</Link>
         </div>
     );
 };

@@ -47,7 +47,7 @@ const IconsWalletAndPerf = () : ReactElement => {
                 </div>
                 <div id="contact">
                     <img id="contact_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContact" aria-controls="offcanvasContact" src={contact} alt="contact"/>                   
-                    <p>contact us</p>
+                    <p id="contact_text">contact us</p>
                 </div>
             </nav>
 

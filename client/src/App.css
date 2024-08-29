@@ -11,6 +11,15 @@ body {
   align-items: center;
 }
 
+#firstday_container{
+  margin: 20px;
+}
+
+#set_budget{
+  background-color: #fdfaf2;
+  border: 1px solid #6e3f22;
+  color: #6e3f22;
+}
 
 #welcome_container {
   display: flex;
@@ -54,6 +63,10 @@ body {
   left: 10px;
   top: 140px;
   opacity: 0.9;
+}
+
+#wallet_status, #performance_status, #contact_text{
+  font-weight: bold;
 }
 
 nav {
@@ -110,7 +123,7 @@ nav {
 #one_more_container{
   height: 100px;
 }
-
+btn
 #cost, #time, .question{
   margin: 0px;
 }
@@ -161,7 +174,7 @@ nav {
   font-size: 18px;
 }
 
-#submit_register, .btn, #submit_login {
+#submit_register, #to_register,#to_login, #submit_login {
   height: 50px;
   width: 100%;
   color: #6e3f22;
@@ -174,13 +187,13 @@ nav {
 
 }
 
-.btn{
+/* .btn{
   height: 40px;
   width: 180px;
   position: absolute;
   left: 110px;
   bottom: 30px;
-}
+} */
 
 #register_title, #login_title{
   font-size: 40px;
@@ -201,8 +214,8 @@ nav {
 }
 
 #dog_medal{
-  height: 180px;
-  width: 180px;
+  height: 160px;
+  width: 160px;
 }
 
 #congrats {
@@ -223,11 +236,34 @@ nav {
 
 #share_button{
   position: absolute;
+  padding: 0px;
   bottom: 130px;
   width: 200px;
-  border: 1px solid #6e3f22;
-  background-color: #6e3f22;
-  color: #fdfaf2;
+  height: 50px;
+  font-size: 30px;
+  border: 3px solid #6e3f22;
+  color: #6e3f22;
   border-radius: 7px;
   left: 113px;
+}
+
+#share_container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#share_icons_container{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.icons_share{
+  height: 70px;
+}
+
+.offcanvas{
+  background-color: #fdfaf2;
+  color: #6e3f22;
 }
