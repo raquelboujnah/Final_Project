@@ -3,7 +3,6 @@ import Login from './component/Login';
 import Register from './component/Register';
 import { Routes, Route } from 'react-router-dom';
 import Home from './component/Home';
-import EndOfSimulation from './component/EndOfSimulation';
 import FirstDay from './component/FirstDay';
 
 function App() {

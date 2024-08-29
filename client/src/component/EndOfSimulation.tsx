@@ -1,6 +1,5 @@
 import { ReactElement } from "react";
 import dog_medal from "../assets/dog_medal2.png"
-import jump_dog from "../assets/jump_dog.png"
 
 const EndOfSimulation = () : ReactElement => {
     const username = localStorage.getItem('capitalizedUsername');

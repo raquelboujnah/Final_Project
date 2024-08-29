@@ -4,13 +4,11 @@ import DogSick from "./DogSick";
 import DogAttention from "./DogAttetntion";
 import funFact from "./FunFact";
 import NeedDogSit from "./NeedDogSit";
-import FirstDay from "./FirstDay";
 import {displayDayNum} from "./DayCount";
 import EndOfSimulation from "./EndOfSimulation";
 import BathTime from "./BathTime";
 import IconsWalletAndPerf from "./IconsWalletAndPerf";
 import happyDogImage from '../assets/happy_dog.png';
-import asking_dog from '../assets/asking_dog.png';
 import walk_dog from '../assets/walk_dog.png';
 import eat_dog from '../assets/eat_dog.png';
 import WalletAndPerf from "./WalletAndPerf";
@@ -22,7 +20,6 @@ const Home = () : ReactElement => {
     const [currentHour, setCurrentHour] = useState<string>("");
     const [walkContent, setWalkContent] = useState<ReactElement | null>(null);
     const [feedContent, setFeedContent] = useState<ReactElement | null>(null);
-    const [funfactContent, setFunfactContent] = useState<string | null>(null);
     const [isActionComponentVisible, setIsActionComponentVisible] = useState<boolean>(true);
     const [attentionTimes, setAttentionTimes] = useState<string[]>([])
     const day_funFact = localStorage.getItem('day_funFact')

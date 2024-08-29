@@ -1,7 +1,6 @@
 import { ReactElement, useRef, useEffect, useState } from "react";
 import performance_icon from '../assets/dog_medal.png';
 import wallet_icon from '../assets/wallet.png';
-import coins from '../assets/coins.png';
 import { useWalletIncrement, useWalletSelector } from "../features/wallet/walletHooks";
 import { walletUpdate } from "../features/wallet/walletUpdate";
 import { usePerfSelector } from "../features/performance/perfHooks";
@@ -12,7 +11,7 @@ const IconsWalletAndPerf = () : ReactElement => {
     const [performance, setPerformance] = useState<number>(0);
     const wallet = useWalletSelector()
     const refellRef = useRef<HTMLInputElement>(null);
-    const messageRef = useRef<HTMLInputElement>(null);
+    // const messageRef = useRef<HTMLInputElement>(null);
     const increment = useWalletIncrement()
     const perf = usePerfSelector()
 

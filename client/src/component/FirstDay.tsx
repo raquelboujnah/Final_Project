@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from "react";
+import { ReactElement, useRef } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { useSetWallet } from "../features/wallet/walletHooks";
 import { walletUpdate } from "../features/wallet/walletUpdate";
