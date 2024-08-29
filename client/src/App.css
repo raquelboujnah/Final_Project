@@ -1,42 +1,233 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  text-align: center;
+  background-color: #fdfaf2 ;
+  font-family: "Ubuntu", sans-serif;
+  color: #6e3f22;
+}
+
+#root { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#welcome_container {
+  display: flex;
+  margin-top: 30px;
+}
+
+#welcome {
+  font-size:35px;
+}
+
+#happy_dog {
+  height: 150px;
+}
+
+#walk_dog{
+  height: 140px;
+}
+
+#eat_dog, #img_alert{
+  height: 130px;
+}
+
+
+ 
+#walk_dog {
+  position:absolute;
+  bottom: 388px;
+  right:20px;
+} 
+
+
+#eat_dog {
+  position:absolute;
+  bottom: 225px;
+  right:20px;
+} 
+
+#asking_dog {
+  height: 140px;
+  position:absolute;
+  left: 10px;
+  top: 140px;
+  opacity: 0.9;
+}
+
+nav {
+  height: 80px;
+  width: 100%;
+  background-color: #e9d3b3;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  padding: 10px;
+  z-index: 1;
+}
+
+#performance_icon, #wallet_icon, #contact_icon {
+  height: 42px;
+}
+
+#contact_container{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#fun_fact {
+  height: 180px;
+  margin: 30px;
+}
+
+.fun_fact_content {
+  font-size: 115%;
+}
+
+#fun_fact .fun_fact_content:first-child {
+  font-size: 150%;
+  font-weight: bold;
+}
+
+#walk_container, #feed_container, #alert_container {
+  height: 120px;
+  width: 90%;
+  border: 2px solid #6e3f22;
+  border-radius: 6px;
+  margin: 25px;
+  padding: 20px;
+  text-align: start;
+}
+
+#alert_container{
+  height: 190px;
+}
+
+#one_more_container{
+  height: 100px;
+}
+
+#cost, #time, .question{
+  margin: 0px;
+}
+
+
+#no_button, #yes_button{
+  margin: 0px;
+  position: absolute;
+  top: 935px;
+  padding: 1px 10px;
+  border: 1.5px solid #6e3f22;
+  background-color: #fdfaf2;
+  color: #6e3f22;
+  border-radius: 7px;
+}
+
+#no_alert{
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+#no_button{
+  left: 170px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#img_alert {
+  position: absolute;
+  right: 30px;
+  top: 860px;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+#register_form, #login_form {
+  height: 800px;
+  width: 400px;
+  padding: 50px;
 }
 
-.card {
-  padding: 2em;
+#login_form{
+  margin-top: 150px;
 }
 
-.read-the-docs {
-  color: #888;
+.form-select{
+  height: 60px;
+  color: #6e3f22;
+}
+ 
+.form-label{
+  font-size: 18px;
+}
+
+#submit_register, .btn, #submit_login {
+  height: 50px;
+  width: 100%;
+  color: #6e3f22;
+  background-color: white;
+  border: 1px solid #6e3f22;
+  border-radius: 5px;
+  font-size: 23px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+
+.btn{
+  height: 40px;
+  width: 180px;
+  position: absolute;
+  left: 110px;
+  bottom: 30px;
+}
+
+#register_title, #login_title{
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#end_container {
+  height: 700px;
+  width: 360px;
+  margin-left: 33px;
+  border: 3px solid #6e3f22;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  font-size: 20px;
+}
+
+#dog_medal{
+  height: 180px;
+  width: 180px;
+}
+
+#congrats {
+  margin-top: 50px;
+  font-size: 50px;
+}
+
+#text_certificaded{
+  margin-bottom: 0px;
+}
+
+#certificaded{
+  margin-top: 0px;
+  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+#share_button{
+  position: absolute;
+  bottom: 130px;
+  width: 200px;
+  border: 1px solid #6e3f22;
+  background-color: #6e3f22;
+  color: #fdfaf2;
+  border-radius: 7px;
+  left: 113px;
 }
