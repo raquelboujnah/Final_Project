@@ -9,6 +9,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "/client/build")));
 
+
 app.use(cors());
 
 
@@ -19,6 +20,6 @@ app.listen(process.env.PORT || 5000, () => {
 //defining the root and the router
 app.use('/dog', router);
  
-// app.get("*", (req, res) => {
-//     res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
-// });
+app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "./client/build", "index.html"));
+});
