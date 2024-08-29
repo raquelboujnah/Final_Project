@@ -21,24 +21,11 @@ const Home = () : ReactElement => {
     const [walkContent, setWalkContent] = useState<ReactElement | null>(null);
     const [feedContent, setFeedContent] = useState<ReactElement | null>(null);
     const [isActionComponentVisible, setIsActionComponentVisible] = useState<boolean>(true);
-    const [attentionTimes, setAttentionTimes] = useState<string[]>([])
+    const [attentionTimes, setAttentionTimes] = useState<string[]>([]);
     const day_funFact = localStorage.getItem('day_funFact')
 
     const feedingTimes : string[] = ["08:30", "20:30"];
     const walkingTimes : string[] = ["07:30", "13:00", "19:30"];
-
-    const createRandomTimes = (): void => {
-        const randomTimes: string[] = [];
-    
-        for (let i = 0; i < 2; i++) {
-            const hours = Math.floor(Math.random() * 24);
-            const minutes = Math.floor(Math.random() * 60);
-            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-            randomTimes.push(formattedTime);            
-        }
-        setAttentionTimes(randomTimes);
-        
-    };
     
     useEffect(() => {
         if (isActionComponentVisible) {
@@ -50,12 +37,14 @@ const Home = () : ReactElement => {
         updateHour(); 
         const intervalId = setInterval(updateHour, 60 * 1000); 
         return () => clearInterval(intervalId);
+        
     }, []);
 
     useEffect(() => {
         walkPerHour(currentHour);
         feedPerHour(currentHour);
         attentionPerHour(currentHour);
+        attention(currentHour)
         funfactDisplay(currentHour);
     }, [currentHour]);
 
@@ -63,9 +52,18 @@ const Home = () : ReactElement => {
         const now = new Date();
         const hour = `${now.getHours()}:${now.getMinutes() < 10 ? '0' : ''}${now.getMinutes()}`;
         setCurrentHour(hour);
-        if (hour === "06:00") {
-            createRandomTimes();
-        }
+    };
+
+    const createRandomTimes = (): string[] => {
+        const randomTimes: string[] = [];
+        for (let i = 0; i < 2; i++) {
+            const hours = Math.floor(Math.random() * 24);
+            const minutes = Math.floor(Math.random() * 60);
+            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+            randomTimes.push(formattedTime); 
+        };
+        return randomTimes;
+        
     };
 
     const calculateTimeDifference = (currentHour: string, eventTimes: string[], action: string): string => {
@@ -96,11 +94,11 @@ const Home = () : ReactElement => {
     const actionsPerDay = () : ReactElement | null => {
         if(dayCount === 10 || dayCount === 20 || dayCount === 29){                                    
             return <BuyFood/>;
-        }else if(dayCount === 15){
+        }else if(dayCount === 1){
             return <DogSick/>;
         }else if(dayCount === 18){
             return <BathTime/>;
-        }else if(dayCount === 1){
+        }else if(dayCount === 13){
             return <NeedDogSit/>;
         }else return null
     };
@@ -154,6 +152,13 @@ const Home = () : ReactElement => {
     };
 
     const attentionPerHour = (hour: string): void => {
+        if (hour === '15:01') {
+            const times = createRandomTimes();
+            setAttentionTimes(times)
+        }
+    };
+
+    const attention = (hour: string) : void => {
         if (attentionTimes.includes(hour)) {
             setActionComponent(
                 <>
@@ -161,7 +166,7 @@ const Home = () : ReactElement => {
                 </>
             );
         }
-    };
+    }
 
 
     const hideActionComponent = () => {

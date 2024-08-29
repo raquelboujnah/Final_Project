@@ -15,10 +15,39 @@ body {
   margin: 20px;
 }
 
+@media only screen and (min-width: 1024px) {
+  #root {
+    max-width: 1024px;
+    margin: 0 auto;
+  }
+}
+
 #set_budget{
   background-color: #fdfaf2;
   border: 1px solid #6e3f22;
   color: #6e3f22;
+}
+
+#yes_button_first_day, #no_button_first_day, #start{
+  border: 1px, solid #6e3f22;
+  background-color: #fdfaf2;
+  color: #6e3f22;
+  height: 35px;
+  padding: 0px 8px;
+  margin: 5px;
+}
+
+#start{
+  height: 55px;
+  padding: 0px 30px;
+  font-size: 26px;
+}
+
+.container_first_things{
+  border: 2px solid #6e3f22;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 10px;
 }
 
 #welcome_container {
@@ -35,34 +64,25 @@ body {
 }
 
 #walk_dog{
+  height: 150px;
+}
+
+#eat_dog{
   height: 140px;
 }
 
-#eat_dog, #img_alert{
-  height: 130px;
-}
 
-
- 
-#walk_dog {
+#walk_dog, #eat_dog {
   position:absolute;
-  bottom: 388px;
-  right:20px;
+  bottom: 20px;
+  right:5px;
 } 
 
-
-#eat_dog {
+#img_alert{
   position:absolute;
-  bottom: 225px;
-  right:20px;
-} 
-
-#asking_dog {
+  right:0px;
+  bottom: 0px;
   height: 140px;
-  position:absolute;
-  left: 10px;
-  top: 140px;
-  opacity: 0.9;
 }
 
 #wallet_status, #performance_status, #contact_text{
@@ -107,6 +127,7 @@ nav {
 }
 
 #walk_container, #feed_container, #alert_container {
+  position: relative;
   height: 120px;
   width: 90%;
   border: 2px solid #6e3f22;
@@ -123,7 +144,7 @@ nav {
 #one_more_container{
   height: 100px;
 }
-btn
+
 #cost, #time, .question{
   margin: 0px;
 }
@@ -132,7 +153,6 @@ btn
 #no_button, #yes_button{
   margin: 0px;
   position: absolute;
-  top: 935px;
   padding: 1px 10px;
   border: 1.5px solid #6e3f22;
   background-color: #fdfaf2;
@@ -148,12 +168,6 @@ btn
   left: 170px;
 }
 
-#img_alert {
-  position: absolute;
-  right: 30px;
-  top: 860px;
-
-}
 
 #register_form, #login_form {
   height: 800px;
