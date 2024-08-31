@@ -1,4 +1,4 @@
-import { ReactElement, useRef } from "react";
+import { ReactElement, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom"; 
 import { useSetWallet } from "../features/wallet/walletHooks";
 import { walletUpdate } from "../features/wallet/walletUpdate";
@@ -12,12 +12,26 @@ const FirstDay = () : ReactElement=> {
     const setWallet = useSetWallet()
     const navigate = useNavigate(); 
 
+    const [error, setError] = useState<string | null>(null);
+
     const handleSubmit = (event: React.FormEvent) => {
-        event.preventDefault()
-        const budget = budgetRef.current?.value;                
-        setWallet(Number(budget))
-        walletUpdate(Number(budget))
+        event.preventDefault();
+        const budget = budgetRef.current?.value;
+
+        // Validate the budget input
+        if (!budget || isNaN(Number(budget)) || Number(budget) <= 0) {
+            setError("Please enter a valid budget greater than 0.");
+            return;
+        }
+
+        // Clear any previous errors
+        setError(null);
+
+        // Update wallet and navigate to the next step
+        setWallet(Number(budget));
+        walletUpdate(Number(budget));
     };
+
 
     const handleStart = () => {
         navigate('/');
@@ -34,10 +48,11 @@ const FirstDay = () : ReactElement=> {
                 <p>First, we want you to set the budget that you think will be enough for one month with a dog</p>
                 <p>You will be able to "add" more money if needed</p>
                 <form onSubmit={handleSubmit}>
-                <div className="input-group mb-3">
-                    <input type="text" className="form-control" placeholder="Budget" aria-label="Budget" aria-describedby="button-addon2" ref={budgetRef}/>
-                    <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Set</button>
-                </div>
+                    <div className="input-group mb-3">
+                        <input type="text" className="form-control" placeholder="Budget" aria-label="Budget" aria-describedby="button-addon2" ref={budgetRef}/>
+                        <button className="btn btn-outline-secondary" type="submit" id="button-addon2">Set</button>
+                    </div>
+                    {error && <div style={{ color: 'red' }}>{error}</div>}
                 </form>
                 <h5>Now, before you go play with your new bestfriend, there is a couple things you need to do:</h5>
                 <div className="container_first_things">
@@ -46,7 +61,7 @@ const FirstDay = () : ReactElement=> {
                 </div>
                 <div className="container_first_things">
                     <h6>You must go buy a bed for him, so he has his own place, it's really important for a dog. And of course, if you already there, you must buy him 2 or 3 toys.</h6> 
-                    <WalletAndPerf time="30 hour" num={50} action="Great!" id_yes="yes_button_first_day"  id_no="no_button_first_day"/>
+                    <WalletAndPerf time="30 minutes" num={50} action="Great!" id_yes="yes_button_first_day"  id_no="no_button_first_day"/>
                 </div>
                 <h3>Are you ready to start this new experience with us?</h3>
                 <button onClick={handleStart} id="start">Let's start</button>

@@ -2,16 +2,17 @@ import React, { ReactElement, useEffect, useMemo, useState } from "react";
 import BuyFood from "./BuyFood";
 import DogSick from "./DogSick";
 import DogAttention from "./DogAttetntion";
-import funFact from "./FunFact";
+import funFact from "./funFact";
 import NeedDogSit from "./NeedDogSit";
-import {displayDayNum} from "./DayCount";
+import {displayDayNum} from "./dayCount";
 import EndOfSimulation from "./EndOfSimulation";
 import BathTime from "./BathTime";
-import IconsWalletAndPerf from "./IconsWalletAndPerf";
+import IconsWalletAndPerf from "./NavBar";
 import happyDogImage from '../assets/happy_dog.png';
 import walk_dog from '../assets/walk_dog.png';
 import eat_dog from '../assets/eat_dog.png';
 import WalletAndPerf from "./WalletAndPerf";
+import deleteFunfact from "./deleteFunfact";
 
 const Home = () : ReactElement => {
     const capitalizedUsername = localStorage.getItem('capitalizedUsername');
@@ -20,12 +21,16 @@ const Home = () : ReactElement => {
     const [currentHour, setCurrentHour] = useState<string>("");
     const [walkContent, setWalkContent] = useState<ReactElement | null>(null);
     const [feedContent, setFeedContent] = useState<ReactElement | null>(null);
+    const [trainContent, setTrainContent] = useState<ReactElement | null>(null);
     const [isActionComponentVisible, setIsActionComponentVisible] = useState<boolean>(true);
-    const [attentionTimes, setAttentionTimes] = useState<string[]>([]);
-    const day_funFact = localStorage.getItem('day_funFact')
+    const day_funFact = localStorage.getItem('day_funFact');
+    const dog_breed = localStorage.getItem('dog_breed');
 
     const feedingTimes : string[] = ["08:30", "20:30"];
-    const walkingTimes : string[] = ["07:30", "13:00", "19:30"];
+    const trainingTimes : string[] = ["13:00", "19:00"];
+    const walkingTimes2 : string[] = ["08:00", "18:30"];
+    const walkingTimes3 : string[] = ["07:30", "13:00", "19:30"];
+
     
     useEffect(() => {
         if (isActionComponentVisible) {
@@ -43,8 +48,8 @@ const Home = () : ReactElement => {
     useEffect(() => {
         walkPerHour(currentHour);
         feedPerHour(currentHour);
+        trainPerHour(currentHour)
         attentionPerHour(currentHour);
-        attention(currentHour)
         funfactDisplay(currentHour);
     }, [currentHour]);
 
@@ -54,17 +59,17 @@ const Home = () : ReactElement => {
         setCurrentHour(hour);
     };
 
-    const createRandomTimes = (): string[] => {
-        const randomTimes: string[] = [];
-        for (let i = 0; i < 2; i++) {
-            const hours = Math.floor(Math.random() * 24);
-            const minutes = Math.floor(Math.random() * 60);
-            const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
-            randomTimes.push(formattedTime); 
-        };
-        return randomTimes;
+    // const createRandomTimes = (): string[] => {
+    //     const randomTimes: string[] = [];
+    //     for (let i = 0; i < 2; i++) {
+    //         const hours = Math.floor(Math.random() * 24);
+    //         const minutes = Math.floor(Math.random() * 60);
+    //         const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+    //         randomTimes.push(formattedTime); 
+    //     };
+    //     return randomTimes;
         
-    };
+    // };
 
     const calculateTimeDifference = (currentHour: string, eventTimes: string[], action: string): string => {
         const [currentHourStr, currentMinuteStr] = currentHour.split(":").map(Number);
@@ -92,34 +97,105 @@ const Home = () : ReactElement => {
     };
 
     const actionsPerDay = () : ReactElement | null => {
-        if(dayCount === 10 || dayCount === 20 || dayCount === 29){                                    
-            return <BuyFood/>;
-        }else if(dayCount === 1){
-            return <DogSick/>;
-        }else if(dayCount === 18){
-            return <BathTime/>;
-        }else if(dayCount === 13){
-            return <NeedDogSit/>;
-        }else return null
+        if(dog_breed === 'default' || dog_breed === 'dachshund' || dog_breed === 'cocker' || dog_breed === 'pomeranian'){
+            if(dayCount === 15 || dayCount === 29){                                    
+                return <BuyFood/>;
+            }else if(dayCount === 15){
+                return <DogSick/>;
+            }else if(dayCount === 18){
+                return <BathTime/>;
+            }else if(dayCount === 13){
+                return <NeedDogSit/>;
+            }
+        }
+        else if(dog_breed === 'labrador' || dog_breed === 'husky' || dog_breed === 'golden retriever' || dog_breed === 'german shepherd'){
+            if(dayCount === 10 || dayCount === 20 || dayCount === 29){                                    
+                return <BuyFood/>;
+            }else if(dayCount === 15){
+                return <DogSick/>;
+            }else if(dayCount === 18){
+                return <BathTime/>;
+            }else if(dayCount === 13){
+                return <NeedDogSit/>;
+            }
+        }
+        else if(dog_breed === 'chihuahua' || dog_breed === 'shih tzu'){
+            if(dayCount === 15 || dayCount === 29){                                    
+                return <BuyFood/>;
+            }else if(dayCount === 18){
+                return <BathTime/>;
+            }else if(dayCount === 13){
+                return <NeedDogSit/>;
+            }
+        }
+        else if(dog_breed === 'bulldog' || dog_breed === 'rottweiler'){
+            if(dayCount === 10 || dayCount === 20 || dayCount === 29){                                    
+                return <BuyFood/>;
+            }else if(dayCount === 15){
+                return <DogSick/>;
+            }else if(dayCount === 9 || dayCount === 23){
+                return <BathTime/>;
+            }else if(dayCount === 13){
+                return <NeedDogSit/>;
+            }
+        }return null
+        
     };
 
     const walkPerHour = (hour: string): void => {
-        if (hour === '7:30' || hour === '13:23' || hour === '19:30') {
-            setWalkContent(
+        if (dog_breed === 'default' || dog_breed === 'chihuahua' || dog_breed === 'dachshund' || dog_breed === 'labrador' || dog_breed === 'golden retriever' || dog_breed === 'cocker' || dog_breed === 'shih tzu' || dog_breed === 'pomeranian' || dog_breed === 'bulldog'){
+            if (hour === '8:00' || hour === '18:30') {
+                setWalkContent(
+                    <>
+                        <h5 className="walk_content">It's time to walk your dog!</h5>
+                        <WalletAndPerf time="25 minutes" action="I will get ready" />
+                    </>
+                );
+            }else {
+                setWalkContent(
+                    <>
+                        <h5 className="walk_content">Next walk in:</h5>
+                        <h5 className="walk_content">{calculateTimeDifference(currentHour, walkingTimes2, 'walk')}</h5>
+                    </>
+                );
+            }
+        }else if (dog_breed === 'rottweiler' || dog_breed === 'german shepherd' || dog_breed === 'husky'){
+            if ( hour === '7:30' || hour === '13:23' || hour === '19:30') {
+                setWalkContent(
+                    <>
+                        <h5 className="walk_content">It's time to walk your dog!</h5>
+                        <WalletAndPerf time="45 minutes" action="I will get ready" />
+                    </>
+                );
+            }else {
+                setWalkContent(
+                    <>
+                        <h5 className="walk_content">Next walk in:</h5>
+                        <h5 className="walk_content">{calculateTimeDifference(currentHour, walkingTimes3, 'walk')}</h5>
+                    </>
+                );
+            }
+        }
+            
+    };
+
+    const trainPerHour = (hour: string): void => {
+        if (hour === '13:00' || hour === '19:00') {
+            setTrainContent(
                 <>
-                    <h5 className="walk_content">It's time to walk your dog!</h5>
-                    <WalletAndPerf time="1 hour" action="I will get ready" />
+                    <h5 className="train_content">It's time to train your dog!</h5>
+                    <WalletAndPerf time="15 minutes" action="Okay!" />
                 </>
             );
         }else {
-            setWalkContent(
+            setTrainContent(
                 <>
-                    <h5 className="walk_content">Next walk in:</h5>
-                    <h5 className="walk_content">{calculateTimeDifference(currentHour, walkingTimes, 'walk')}</h5>
+                    <h5 className="train_content">Next feed in:</h5>
+                    <h5 className="train_content">{calculateTimeDifference(currentHour, trainingTimes, 'train')}</h5>
                 </>
             );
         }
-    };
+    }
 
     const feedPerHour = (hour: string): void => {
         if (hour === '8:30' || hour === '20:30') {
@@ -137,41 +213,39 @@ const Home = () : ReactElement => {
                 </>
             );
         }
-    };
-    const setFact = async () => {
-        const fact = await funFact();                
-        return fact.funfacts
     }
 
-
-    const funfactDisplay = async(hour: string) => {
-        if (hour === '10:12') {
-            const day_funFact = await setFact()            
-            localStorage.setItem('day_funFact', day_funFact);
+    const setFact = async (): Promise<string | null> => {
+        try {
+            const fact = await funFact();
+            await deleteFunfact(fact.id)
+            return fact.funfacts;
+        } catch (error) {
+            console.error('Error setting fun fact:', error);
+            return null;
         }
     };
+
+    const funfactDisplay = async (hour: string): Promise<void> => {
+        if (hour === '6:00') {
+            const dayFunFact = await setFact();
+            if (dayFunFact) {
+                localStorage.setItem('day_funFact', dayFunFact);
+            }
+        }
+    };
+
 
     const attentionPerHour = (hour: string): void => {
-        if (hour === '15:01') {
-            const times = createRandomTimes();
-            setAttentionTimes(times)
+        if (hour === '07:55' || hour === '17:23') {
+            setActionComponent(<DogAttention/>);
         }
     };
-
-    const attention = (hour: string) : void => {
-        if (attentionTimes.includes(hour)) {
-            setActionComponent(
-                <>
-                    <DogAttention/>
-                </>
-            );
-        }
-    }
-
 
     const hideActionComponent = () => {
         setIsActionComponentVisible(false);
     };
+    
 
     return (
         <>
@@ -188,7 +262,6 @@ const Home = () : ReactElement => {
                         <h3 className="fun_fact_content">Did you know about that one?</h3>
                         {day_funFact ? <p className="fun_fact_content">{day_funFact}</p> : <p>Loading...</p>}                    
                     </div>
-                    {/* <img id="asking_dog" src={asking_dog} alt="asking dog"/> */}
                     <div id="walk_container">
                         {walkContent}
                         <img id="walk_dog" src={walk_dog} alt="walk dog"/>
@@ -196,6 +269,9 @@ const Home = () : ReactElement => {
                     <div id="feed_container">
                         {feedContent}
                         <img id="eat_dog" src={eat_dog} alt="eat dog"/>
+                    </div>
+                    <div id="train_container">
+                        {trainContent}
                     </div>
                     <div id="alert_container">
                         {isActionComponentVisible && actionComponent ? (

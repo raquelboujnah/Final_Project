@@ -1,4 +1,3 @@
-
 import { ReactElement, useState } from "react";
 import { useRef } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
@@ -105,6 +104,13 @@ const Register = () : ReactElement => {
                         <option value={'labrador'}>Labrador</option>
                         <option value={'chihuahua'}>Chihuahua</option>
                         <option value={'husky'}>Husky</option>
+                        <option value={'dachshund'}>Dachshund</option>
+                        <option value={'golden retriever'}>Golden Retriever</option>
+                        <option value={'cocker'}>Cocker</option>
+                        <option value={'shih tzu'}>Shih Tzu</option>
+                        <option value={'pomeranian'}>Pomeranian</option>
+                        <option value={'rottweiler'}>Rottweiler</option>
+                        <option value={'german shepherd'}>German Shepherd</option>
                         <option value={'pitbull'}>Pitbull</option>
                     </select>
                 </div>

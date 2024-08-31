@@ -1,18 +1,38 @@
-import { ReactElement } from "react";
+import { ReactElement, useState } from "react";
 import dog_medal from "../assets/dog_medal2.png";
 import whatsapp from '../assets/whatsapp.png';
 import instagram from '../assets/instagram.png';
 import download from '../assets/download.png';
 import twitter from '../assets/twitter.png'
+import TodoList from "./TodoList";
 
 const EndOfSimulation = () : ReactElement => {
+    const [showEndContainer, setShowEndContainer] = useState(true); // Controls visibility of end_container
+    const [showTodoList, setShowTodoList] = useState(false);     
     const username = localStorage.getItem('capitalizedUsername');
     const perfomance = localStorage.getItem('performance');    
 
+    const handleCloseAndShowTodoList = () => {
+        setShowEndContainer(false);
+        setShowTodoList(true);
+    };
+
     const checkIfPassed = () : ReactElement => {
-        if(Number(perfomance) > 3){
+        if(Number(perfomance) > 120){
             return (
                 <>
+                    <button 
+                        onClick={handleCloseAndShowTodoList} 
+                        style={{ 
+                            position: "absolute", 
+                            top: "10px", 
+                            right: "10px", 
+                            background: "none", 
+                            border: "none", 
+                            fontSize: "20px", 
+                            cursor: "pointer" 
+                        }}
+                    >X</button>
                     <p id="text_certificaded">Your performance get to {perfomance} so we are more than happy to annonce you that you are now a</p>
                     <p id="certificaded">certificaded future dog owner</p>
                     <button className="shadow-lg" id="share_button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasShare" aria-controls="offcanvasShare">Share</button>
@@ -42,14 +62,19 @@ const EndOfSimulation = () : ReactElement => {
         }
     }
 
-
     return (
-        <div id="end_container" className="shadow-lg">
-            <h3 id="congrats">Congrats {username}!!</h3>
-            <p>You get to the end of the simulation</p>
-            {checkIfPassed()}
+        <div>
+            {showEndContainer && (
+                <div id="end_container" className="shadow-lg">
+                    <h3 id="congrats">Congrats {username}!!</h3>
+                    <p>You have reached the end of the simulation</p>
+                    {checkIfPassed()}
+                </div>
+            )}
+            {showTodoList && <TodoList />}
         </div>
     )
 };
+
 
 export default EndOfSimulation

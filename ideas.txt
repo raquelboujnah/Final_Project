@@ -104,6 +104,47 @@ create table users (
 	performance integer
 )
 
+quizz:
+"Are you willing to make lifestyle changes to accommodate a dog, such as waking up earlier for walks or adjusting travel plans?"
+"Are you prepared for the long-term commitment of owning a dog (10-15 years or more)?"
+"Do you have enough space in your home for a dog?"
+"Do you have a yard or a dog park nearby for exercises?"
+"Do you have a financial plan for unexpected expenses, such as emergency vet visits?"
+"Do you have any concerns about allergies, either for yourself or others in your household?"
+"Are you aware of the specific needs and characteristics of the breed you're considering?"
+"Are your living and financial situation stable for taking care of a dog?"
+"Are you aware of the amout of time you will need to give your dog?"
+
+
+todo:
+"Make your home Dog-Proof"
+    "Remove toxic products from places your dog can reach, or lock them"
+    "Remove toxic plants in your home and yard"
+    "Put all the chargers, electric cords in a box, or in a place he cannot reach"
+    "Clean your floor from small objects as lego, puzzle peices"
+    "Put a locker on your garbage can and needed cabinets"
+    "Moves all the breakable things your own on shelfs or hight spots"
+
+"Find a vet in your neiberhoud or nearby your house"
+
+"Start learning trainings methods"
+
+"Make friends who are dog owner"
+
+"Find a dog park in your neiberhoud"
+
+"Buy all the first essencials"
+    "Food"
+    "Water and food bowls"
+    "A bed"
+    "Toys"
+    "A collar with an identifier"
+    "A leach"
+    "Poop bags"
+
+"Learn about your future dog's breed"
+
+"Find a friend or a family member to lay on in case of emergency"
 
 
 Project Outline: Dog Ownership Simulation App
@@ -338,42 +379,8 @@ Project Development Workflow:
         After launching, monitor user feedback and app performance. Plan for updates and improvements based on this feedback.
         This approach should help you build a comprehensive, engaging app that simulates the experience of dog ownership for first-time owners
 
-    ('Wow, check out those choppers! Puppies have 28 teeth and normal adult dogs have 42.'),
-    ('Spiked dog collars were invented in ancient Greece and were originally designed to protect dogs throats from wolf attacks.'),
-    ('Dogs judge objects first by their movement, then by their brightness, and lastly by their shape.'),
-    ('During the Middle Ages, mixed breeds of peasants’ dogs were required to wear blocks around their necks to keep them from breeding with noble hunting dogs. Purebred dogs were very expensive and hunting became the province of the rich.'),
-    ('One female dog and her female children could produce 4,372 puppies in seven years.'),
-    ('The most popular breed of dog in the US is the Labrador Retriever.'),
-    ('The shortest living dog was a Chihuahua named Milly, who measured only 3.8 inches tall.'),
-    ('Dogs have sweat glands on their paws to help regulate their body temperature.'),
-    ('Most experts believe humans domesticated dogs before donkeys, horses, sheep, goats, cattle, cats, or chickens.'),
-    ('Dogs like to chew bones but cooked bones and bones that can splinter such as cooked chicken bones should not be given to dogs.'),
-    
-    ('Service dogs are recognized in the U.S. as \"necessary medical equipment.\"'),
-    ('President Franklin Roosevelt created a minor international incident when he claimed he sent a destroyer to the Aleutian Islands just to pick up his Scottish Terrier, Fala, who had been left behind.'),
-    ('Greyhounds can reach a speed of up to 45 miles per hour.'),
-    ('Bingo is the name of the dog on the box of Cracker Jacks.'),
-    ('Hollywood’s first and arguably best canine superstar was Rin Tin Tin, a five-day-old German Shepherd found wounded in battle in WWI France and adopted by an American soldier, Lee Duncan. He would sign his own contracts with his paw print.'),
-    ('Dogs can see in color, though they most likely see colors similar to a color-blind human. They can see better when the light is low.'),
-    ('Dogs are mentioned in the Bible more than 35 times.'),
-    ('Dogs can be trained to detect cancer and other diseases in humans.'),
-    ('Dog’s definitely don’t see like hawks. They have very poor eyesight, but can distinguish movement 10-20 times better than humans.'),   
-    ('A Russian dog named Laika was the first animal in space, traveling around Earth in 1957.'),
-    
-    ('Yummy! Dogs have about 1,700 taste buds. Humans have approximately 9,000 and cats have around 473.'),
-    ('At the age of 4 weeks, most dogs have developed the majority of their vocalizations.'),
-    ('The oldest dog on record was an Australian cattle dog named Bluey who lived 29 years and 5 months. In human years, that is more than 160 years old.'),
-    ('Humans have kept dogs as pets for over 12,000 years.'),
-    ('The longer a dog’s nose, the more effective it’s internal cooling system.'),
-    ('Most dogs have 18 or more muscles to tilt, rotate, and move their ears.'),
-    ('Petting a dog can lower your blood pressure.')
-    ('It is much easier for dogs to learn spoken commands if they are given in conjunction with hand signals or gestures.'),
-    ('One of Michael Vick's former fighting dogs, Leo, went on to be a therapy dog who comforted dying children.'),
-    ('A dog’s vision is not fully developed until after the first month.'),
-    ('President Calvin Coolidge owned at least a dozen dogs.'),
 
-
-id serial not null primary key,
+(id serial not null primary key,
 	funfacts text not null
 );
 insert into fun_facts(funfacts)

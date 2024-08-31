@@ -1,5 +1,5 @@
 const path = require("path");
-const {_userRegister, getUserByName, _getOneFunFact, _updateWallet, _updatePerf} = require('../models/dogModels.js')
+const {_userRegister, getUserByName, _getOneFunFact, _deleteFact, _updateWallet, _updatePerf} = require('../models/dogModels.js')
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
 
@@ -61,6 +61,19 @@ const getOneFunFact = async(req, res) => {
         res.status(500).json({ error: "Internal server error" });
     };
 };
+
+const deleteFact = async (req, res) => {
+    const {id} = req.body;
+    try{
+        await _deleteFact(id);
+        res.status(200).json({
+            message: "Fun fact deleted successfullt",
+        });
+    } catch (error) {
+        console.error('Error deleting fun fact:', error);        
+        res.status(500).json({ error: "internal server error" });
+    }
+}
 
 
 const updatePerf = async(req, res) => {
@@ -150,5 +163,6 @@ module.exports = {
     userLogin,
     updateWallet,
     getOneFunFact,
+    deleteFact,
     updatePerf
 }

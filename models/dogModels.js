@@ -40,7 +40,18 @@ const _getOneFunFact = async () => {
       return funfact[0];      
   } catch (error) {
       throw error;
-  }
+  };
+};
+
+const _deleteFact = async (id) => {
+  try{
+    const factToDelete = await sql('fun_facts')
+    .where('id', id)
+    .del();
+    return factToDelete
+  }catch(error){
+    throw error;
+  };
 };
 
 const _updateWallet = (wallet, username) => {
@@ -80,6 +91,7 @@ module.exports = {
     _userRegister,
     getUserByName,
     _getOneFunFact,
+    _deleteFact,
     _updateWallet,
     _updatePerf
 }

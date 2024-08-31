@@ -4,6 +4,7 @@ import Register from './component/Register';
 import { Routes, Route } from 'react-router-dom';
 import Home from './component/Home';
 import FirstDay from './component/FirstDay';
+import Quizz from './component/Quizz';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/firstday' element={<FirstDay/>}/>
+        <Route path='/quizz' element={<Quizz/>}/>
       </Routes>
     </>
   )

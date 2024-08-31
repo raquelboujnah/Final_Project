@@ -4,9 +4,11 @@ import wallet_icon from '../assets/wallet.png';
 import { useWalletIncrement, useWalletSelector } from "../features/wallet/walletHooks";
 import { walletUpdate } from "../features/wallet/walletUpdate";
 import { usePerfSelector } from "../features/performance/perfHooks";
-import contact from "../assets/contact.png"
+import contact from "../assets/contact.png";
+import quizz from '../assets/quizz.png';
+import { useNavigate } from "react-router-dom";
 
-const IconsWalletAndPerf = () : ReactElement => {
+const NavBar = () : ReactElement => {
     const [walletStatus, setWalletStatus] = useState<number>(0);
     const [performance, setPerformance] = useState<number>(0);
     const wallet = useWalletSelector()
@@ -14,6 +16,7 @@ const IconsWalletAndPerf = () : ReactElement => {
     // const messageRef = useRef<HTMLInputElement>(null);
     const increment = useWalletIncrement()
     const perf = usePerfSelector()
+    const navigate = useNavigate()
 
     useEffect(()=>{
         const walletValue = Number(localStorage.getItem('wallet_status')) || 0;
@@ -26,12 +29,17 @@ const IconsWalletAndPerf = () : ReactElement => {
         setWalletStatus(wallet);
         setPerformance(perf);
     }, [wallet, perf]);
+    
 
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault()
         const refell = refellRef.current?.value;        
         increment(Number(refell))
         walletUpdate(wallet + Number(refell));
+    }
+
+    const displayQuizz = () => {
+        navigate('/quizz')
     }
 
     return(
@@ -47,7 +55,10 @@ const IconsWalletAndPerf = () : ReactElement => {
                 </div>
                 <div id="contact">
                     <img id="contact_icon" data-bs-toggle="offcanvas" data-bs-target="#offcanvasContact" aria-controls="offcanvasContact" src={contact} alt="contact"/>                   
-                    <p id="contact_text">contact us</p>
+                    <p id="contact_text">Contact us</p>
+                </div>
+                <div id="quizz">
+                    <img id="quizz_icon" src={quizz} alt="quizz" onClick={displayQuizz}/>                   
                 </div>
             </nav>
 
@@ -89,4 +100,4 @@ const IconsWalletAndPerf = () : ReactElement => {
     );
 };
 
-export default IconsWalletAndPerf;
+export default NavBar;
