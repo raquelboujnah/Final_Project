@@ -51,7 +51,7 @@ const Login = (): ReactElement => {
                 localStorage.setItem('wallet_status', data.user.wallet_status);
                 localStorage.setItem('performance', data.user.performance);
                 setSuccessMessage("Login successful! Redirecting...");
-                navigate('/');
+                navigate('/home');
             } else if (response.status === 404) {
                 setErrorMessage(data.message || "User not found. Please check your credentials.");
             } else if (response.status === 401) {

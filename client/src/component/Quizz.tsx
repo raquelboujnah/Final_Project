@@ -15,7 +15,7 @@ const Quizz = () : ReactElement => {
         "Are you aware of the amout of time you will need to give your dog?"]
 
     const home = () => {
-        navigate('/')
+        navigate('/home')
     }
 
     return(

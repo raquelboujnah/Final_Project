@@ -34,7 +34,7 @@ const FirstDay = () : ReactElement=> {
 
 
     const handleStart = () => {
-        navigate('/');
+        navigate('/home');
     };
 
     return(
