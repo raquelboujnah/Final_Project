@@ -142,13 +142,17 @@ const Home = () : ReactElement => {
         
     };
 
-    const walkPerHour = (hour: string): void => {
+    // const hideWalkContent = (): void => setWalkContent(null);
+    // const hideFeedContent = (): void => setFeedContent(null);
+    // const hideTrainContent = (): void => setTrainContent(null);
+
+    const walkPerHour = (hour: string): void | null => {
         if (dog_breed === 'default' || dog_breed === 'chihuahua' || dog_breed === 'dachshund' || dog_breed === 'labrador' || dog_breed === 'golden retriever' || dog_breed === 'cocker' || dog_breed === 'shih tzu' || dog_breed === 'pomeranian' || dog_breed === 'bulldog'){
-            if (hour === '8:00' || hour === '18:30') {
+            if (hour === '8:41' || hour === '18:30') {
                 setWalkContent(
                     <>
                         <h5 className="walk_content">It's time to walk your dog!</h5>
-                        <WalletAndPerf time="25 minutes" action="I will get ready" />
+                        <WalletAndPerf time="25 minutes" action="I will get ready"/>
                     </>
                 );
             }else {
