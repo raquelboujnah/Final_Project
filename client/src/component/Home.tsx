@@ -264,7 +264,7 @@ const Home = () : ReactElement => {
                     </div>
                     <div id="fun_fact">
                         <h3 className="fun_fact_content">Did you know about that one?</h3>
-                        {day_funFact ? <p className="fun_fact_content">{day_funFact}</p> : <p>Loading...</p>}                    
+                        {day_funFact ? <p className="fun_fact_content">{day_funFact}</p> : <p>During the Middle Ages, mixed breeds of peasant's dogs were required to wear blocks around their necks to keep them from breeding with noble hunting dogs. Purebred dogs were very expensive and hunting became the province of the rich.</p>}                    
                     </div>
                     <div id="walk_container">
                         {walkContent}
